@@ -7,7 +7,12 @@ package main // function is going to be the part of the main
 import (
 	"fmt"
 ) // import the required package
-/* Difference between the slice and array?
+/*
+We can also import the packages in the seperate ine
+import ("fmt")
+import ("sort")
+
+Difference between the slice and array?
 size of the array is fixed.
 slice array can be increased.
 
@@ -136,7 +141,7 @@ func main4() {
 //========================================================
 
 // range keyword provides the idex and the value. range works for array, slice and map
-func main() {
+func main5() {
 	fruits := [3]string{"apple", "orange", "banana"}
 	for idx, val := range fruits {
 		fmt.Printf("%v\t%v\n", idx, val)
@@ -147,7 +152,7 @@ func main() {
 
 //if we want to omit the index
 
-func main5() {
+func main6() {
 	fruits := [3]string{"apple", "orange", "banana"}
 	for _, val := range fruits { // to omit the value for idx, _ := range fruits {
 		fmt.Printf("%v\n", val)
@@ -161,7 +166,7 @@ func familyName(fname string, age int) {
 	fmt.Println("Hello", age, "year old", fname, "Refsnes")
 }
 
-func main6() {
+func main7() {
 	familyName("Liam", 3)
 	familyName("Jenny", 14)
 	familyName("Anja", 30)
@@ -179,32 +184,33 @@ func myFunction(x int, y string) (result int, txt1 string) {
 }
 
 // Here we are ignoring the 2nd return parameter. similarly we can also ignore the first return parameter
-func main7() {
+func main8() {
 	a, _ := myFunction(5, "Hello")
 	a1, b1 := myFunction(5, "Hello") //Here both the reurn arguments are used
 	fmt.Println(a)
+	fmt.Println(a1, b1)
 	fmt.Println(myFunction(5, "Hello")) //10 Hellow World
 }
 
 //========================================================
 
 // uname return
-func myFunction(x int, y int) (int, string) { // retun the int and string // if it is single return you can put func myFunction(x int, y int) int
+func myFunction1(x int, y int) (int, string) { // retun the int and string // if it is single return you can put func myFunction(x int, y int) int
 	return x + y, "Hellow" //3, Hellow
 }
 
-func main8() {
-	fmt.Println(myFunction(1, 2)) //3 Hellow
+func main10() {
+	fmt.Println(myFunction1(1, 2)) //3 Hellow
 }
 
 // ========================================================
-func myFunction(x int, y int) (result int) {
+func myFunction2(x int, y int) (result int) {
 	result = x + y
 	return result //simply return since the result is specified in the function first line
 }
 
-func main() {
-	fmt.Println(myFunction(1, 2))
+func main11() {
+	fmt.Println(myFunction2(1, 2))
 }
 
 // =============================
@@ -218,7 +224,7 @@ func factorial_recursion(x float64) (y float64) {
 	return
 }
 
-func main12() {
+func main13() {
 	fmt.Println(factorial_recursion(4))
 }
 
@@ -234,7 +240,7 @@ type Person struct {
 	salary int
 }
 
-func main() {
+func main12() {
 	var pers1 Person
 	var pers2 Person
 
@@ -255,13 +261,27 @@ func main() {
 
 	// Print Pers2 info by calling a function
 	printPerson(pers2)
-}
 
+}
 func printPerson(pers Person) {
 	fmt.Println("Name: ", pers.name)
 	fmt.Println("Age: ", pers.age)
 	fmt.Println("Job: ", pers.job)
 	fmt.Println("Salary: ", pers.salary)
+}
+
+func functionadd1(valu2 ...int) int {
+	total := 0
+
+	for _, v := range valu2 {
+		total = total + v
+	}
+	//fmt.Println(total)
+	return total
+}
+
+func main() {
+	fmt.Println(functionadd1(1, 2, 3, 4, 5))
 }
 
 /*
@@ -321,4 +341,13 @@ myslice when using make need the length and the capacity. capacity is not must.
 slice can be copied to other other slice variable using copy?
 range wiull work on the array , slice, map. range value or key can be ignored using_.
 when we specify the return variable in the function definition then return <return variable > is not must it can be return;
+
+if the function is going to take arument of same type
+func function(value1, value int) {
+}
+
+func function(value1 int, value int) {
+}
+
+
 */
