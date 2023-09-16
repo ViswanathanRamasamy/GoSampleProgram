@@ -296,3 +296,7 @@ func main() {
 	fmt.Println(obj.message) //hi  //changes made inside the function will not imapac
 	obj.message = "good"
 }
+
+/*
+
+*/
