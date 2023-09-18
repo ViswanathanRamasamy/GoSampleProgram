@@ -1,6 +1,8 @@
 /*
 Lesson6: sample program of Golang for the beginers.
 Source Code Location: https://github.com/ViswanathanRamasamy/GoSampleProgram.git
+Author Name: Viswanathan Ramasamy
+Email id: rviswawt@gmail.com
 */
 ================================================================================
 defer function for closing the file:

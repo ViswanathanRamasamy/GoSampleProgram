@@ -295,7 +295,7 @@ func main() {
  var a = map[string]string{"brand": "Ford", "model": "Mustang", "year": "1964"} // print the element %v a
   b := map[string]int{"Oslo": 1, "Bergen": 2, "Trondheim": 3, "Stavanger": 4}  //prprint the elemnt %v b
 
-  //map using make
+  //Tuple using make
 var a = make(map[KeyType]ValueType)
 b := make(map[KeyType]ValueType)
 //(a == nil) is true
@@ -478,7 +478,6 @@ func main() {
 /* Note:
 double pointer
 copy
-cap
 append
 check whether the key is present in map
 continue and break in for loop

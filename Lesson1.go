@@ -1,8 +1,24 @@
 /*
 sample program of Golang for the beginers.
 Source Code Location: https://github.com/ViswanathanRamasamy/GoSampleProgram.git
+Author Name: Viswanathan Ramasamy
+Email id: rviswawt@gmail.com
 */
 
+Why choose Go for development?
+- **Answer:** Go offers several advantages for development, including:
+    - Strong performance and efficiency.
+    - A simple and clean syntax that promotes readability and maintainability.
+    - Concurrency support with goroutines and channels.
+    - A rich standard library.
+    - Cross-platform compatibility.
+    - Strong focus on simplicity, safety, and scalability.
+    - A large and active community
+	- strong typing, faster compilation
+	- general purpose high level language
+
+//const dont require var
+	
 // To add comments
 /* multiple line comments */
 // Filename notation: file name should have .go
@@ -22,7 +38,9 @@ func main2() { fmt.Println("Hello, World") }
 //different type of variable are int, float32, string, bool
 // 2 ways to initilize the variable direct and inferred. in inferred 2 ways
 // note the go will initialize the variable to the default value if not initialized
+
 // var a bool; var b string; var c int; //false "" and 0
+
 // what is the difference between the var and inferrred?
 // a. var can be used inside and outside the function with or with out initialization
 // b. variable declaration and definition can be different line
@@ -77,6 +95,7 @@ func main5() {
 //Pascal Case: MyVariableName = "John"
 //Snake Case: my_variable_name = "John"
 //const can be declared or out side the function . They Generally return in capital letter
+//we cannot define the const  like const pi:= 3.14 or var const pi float32 =3.14
 
 const PI = 3.14
 const PI1 float32 = 3.14
@@ -121,7 +140,7 @@ func main7() {
 	fmt.Print(m)    //12
 	fmt.Print(k, m) //1 2
 
-	fmt.Printf("\ni has value: %v and type: %T\n", i, i)
+	fmt.Printf("\ni has value: %v and type: %T\n", i, i) // %v gives the value and %T will give you the type
 	fmt.Printf("j has value: %v and type: %T", j, j)
 }
 
@@ -209,17 +228,149 @@ func main() {
 	fmt.Println(cars[1])
 	cars[1] = "viswa"
 	fmt.Println(cars[1])
-	arr11 := [5]int{} //not initialized [0 0 0 0 0]
+	arr11 := [5]int{} // initialized [0 0 0 0 0]
 	fmt.Println(arr11)
 
-	var arr12 = [5]int{} //not initialized [0 0 0 0 0]
+	var arr12 = [5]int{} // initialized [0 0 0 0 0] 
+	//var arr12 [5]int{} //not allowed
 	fmt.Println(arr12)
 	// arr2 := [5]int{1,2} //partially initialized 12 0 0 0
 	//arr1 := [5]int{1:10,2:40} // [0 10 40 0 0]
 }
 
+    func main10 () {
+      //var numbers [5]int {} //not allowed
+      var numbers [5]int // 0 0 0 0 0
+	  numbers = [5]int{1, 2, 3, 4, 5}
+
+      fmt.Println(numbers)
+        
+    }
+============================
+//print will what ever the content you passed.
+//if format the specifier you need specify %f in the printf
+// also not the typecasting of flaot requires both in the numerator and denominator.
+//index value is neglected.
+
+package main
+import "fmt"
+
+func main() {
+    var array [6] int
+    array = [6] int {1,2,33,4,7,5}
+    
+    sum := 0
+    for _,data := range array {
+        sum += data
+    }
+    
+    fmt.Printf("%0.2f",float64(sum) / float64(len(array)))
+}
+=========================	
+program to find the average of the element without using the lenpackage main
+
+import "fmt"
+
+func main() {
+    // Declare an array of integers
+    numbers := [5]int{10, 20, 30, 40, 50}
+
+    // Declare variables to store the sum and length of the array
+    var sum int
+    var length int
+
+    // Calculate the sum of the array elements and its length
+    for _, num := range numbers { //num is local scope cannot be accessed outside the for loop
+        sum += num
+        length++
+    }
+
+    // Calculate the average
+    average := float64(sum) / float64(length)
+
+    // Print the array, sum, length, and average
+    fmt.Println("Array:", numbers)
+    fmt.Println("Sum:", sum)
+    fmt.Println("Length:", length)
+    fmt.Println("Average:", average)
+}
+=======================================
+How to make the variable to access outside the for loop
+package main
+import "fmt"
+
+
+func main() {
+    var input [5] int
+    input = [5] int {1,23,3,4,5}
+    sum :=0
+    i:=0
+    data:=0
+    for i,data = range input { 
+        sum +=data
+        i++;
+    }
+    
+    fmt.Println(sum, i)
+    fmt.Println(float64(sum)/float64(i)) //if i is in the scope of the for loop we will get the error i is undefined
+
+}
+==========================================
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func isPalindrome(str string) bool {
+	// Remove spaces and convert to lowercase
+	str = strings.ReplaceAll(str, " ", "")
+	str = strings.ToLower(str)
+
+	// Check if the string is the same forwards and backwards
+	for i := 0; i < len(str)/2; i++ {
+		if str[i] != str[len(str)-1-i] {
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+	input := "A man a plan a canal Panama"
+	if isPalindrome(input) {
+		fmt.Println(input, "is a palindrome.")
+	} else {
+		fmt.Println(input, "is not a palindrome.")
+	}
+}
+================================================
+package main
+import "fmt"
+
+func main() {
+   input := "MadaM"
+   status := true
+   length := len(input) -1
+   
+   for i,j:=0,length; i<=j; i,j =i+1,j-1 {
+   
+       if input [i] != input [j] {
+           fmt.Println("not palindrome")
+           status = false;
+           break;
+       }
+   }
+   
+   if status == true {
+       fmt.Println("palindrome")
+   }
+   
+}
+
 /*
 To print the % in the output console use %% in the print
 Printf has the format specifier not println and print
-bool data types
+bool data types %t true false
 */
